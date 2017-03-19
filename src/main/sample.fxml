@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+          xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="115.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="192.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="266.0" minWidth="9.0" prefWidth="82.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="44.0" minHeight="0.0" prefHeight="44.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="52.0" minHeight="9.0" prefHeight="42.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="54.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES"/>
+        <RowConstraints prefHeight="25.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="24.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <Label layoutX="10.0" layoutY="22.0" text="Colors:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <CheckBox fx:id="checkSpades" mnemonicParsing="false" text="♠" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+        <CheckBox fx:id="checkHearts" mnemonicParsing="false" text="♥" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets left="35.0"/>
+            </GridPane.margin>
+        </CheckBox>
+        <CheckBox fx:id="checkClubs" layoutX="270.0" layoutY="87.0" mnemonicParsing="false" text="♣"
+                  GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets left="105.0"/>
+            </GridPane.margin>
+        </CheckBox>
+        <Label text="Time to remember:" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <CheckBox fx:id="checkDiamonds" layoutX="240.0" layoutY="87.0" mnemonicParsing="false" text="♦"
+                  GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets left="70.0"/>
+            </GridPane.margin>
+        </CheckBox>
+        <ComboBox fx:id="comboBox" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+        <Label prefHeight="73.0" prefWidth="205.0" text="Settings" GridPane.columnIndex="2">
+            <font>
+                <Font size="50.0"/>
+            </font>
+        </Label>
+        <Label layoutX="117.0" layoutY="182.0" text="Concetration time:" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Button fx:id="goButton" maxHeight="60.0" mnemonicParsing="false" onAction="#handleGoAction" prefHeight="60.0"
+                prefWidth="2000.0" text="GO" GridPane.columnIndex="2" GridPane.rowIndex="8">
+            <font>
+                <Font name="System Bold" size="35.0"/>
+            </font>
+        </Button>
+        <Button fx:id="instButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Instructions"
+                GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+        <ComboBox fx:id="comboBox1" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+    </children>
+</GridPane>
