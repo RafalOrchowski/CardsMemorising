@@ -32,34 +32,51 @@ public class Controller implements Initializable {
     private Settings settings = new Settings();
     private Labels labels = new Labels();
 
+    static void alertBox(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Choose settings");
+        alert.showAndWait();
+
+    }
+
 
     public void handleGoAction() throws IOException {        // pressing GO button sets values user input and if values are OK it proceeds to a new scene
         boolean isCorrect = false;  // temporary variables to store info if comboboxes are selected
         boolean isCorrect2 = false;
+        boolean isCorrect3 = false;
 
-        settings.setDiamonds(checkDiamonds.isSelected());
-        settings.setClubs(checkClubs.isSelected());
-        settings.setSpades(checkSpades.isSelected());
-        settings.setHearts(checkHearts.isSelected());
         if (comboBox1.getValue() == null) {
-            System.out.println("zle");
+
             isCorrect = false;          // checking if value is selected
         } else if (comboBox1.getValue() != null) {
             settings.setTimeConcentration(Integer.parseInt(comboBox1.getValue()));
             isCorrect = true;
         }
         if (!checkDiamonds.isSelected() && !checkClubs.isSelected() &&
-                !checkSpades.isSelected() && !checkHearts.isSelected()) {            // checking if at least one checkbox is selected
-            System.out.println("check the cards");
-            isCorrect2 = false;
+                !checkSpades.isSelected() && !checkHearts.isSelected()) {
+                                                                       // checking if at least one checkbox is selected
+            isCorrect3 = false;
+
+        }else if(checkDiamonds.isSelected() && checkClubs.isSelected() &&
+                checkSpades.isSelected() && checkHearts.isSelected()){
+            settings.setDiamonds(checkDiamonds.isSelected());
+            settings.setClubs(checkClubs.isSelected());
+            settings.setSpades(checkSpades.isSelected());
+            settings.setHearts(checkHearts.isSelected());
+             isCorrect3 = true;
         }
         if (comboBox.getValue() == null) {
-            System.out.println("zle");                  // checking if value is selected
+           isCorrect2 = false; // checking if value is selected
         } else if (comboBox.getValue() != null) {
             settings.setTimeRemember(Integer.parseInt(comboBox.getValue()));
             isCorrect2 = true;
         }
-        if (isCorrect && isCorrect2) {
+        if(!isCorrect || !isCorrect2 || !isCorrect3){
+            alertBox();                                   // if at least one of the settings isn't selected alert box appears
+        }
+        if (isCorrect && isCorrect2 && isCorrect3) {
             Stage stage;
             stage = (Stage) goButton.getScene().getWindow();
             stage.setTitle("CardsMemorising");
