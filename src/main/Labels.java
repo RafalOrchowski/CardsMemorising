@@ -13,6 +13,7 @@ import java.util.Collections;
 public class Labels {
     private GridPane gridPane = new GridPane();
     private Cards cards = new Cards();
+    Settings settings = new Settings();
 
     public GridPane getGridPane() {
         return gridPane;
@@ -28,7 +29,7 @@ public class Labels {
 
 
         label.setId(labelname + columnIndex);
-        if (gridPane.getRowIndex(label) == 3) {
+        if (gridPane.getRowIndex(label) == 3) {         //checking if the color is selected; If not, doesn't set text;
             label.setText(cards.hearts[gridPane.getColumnIndex(label)]);
             label.setTextFill(Color.web("red"));
         } else if (gridPane.getRowIndex(label) == 4) {
@@ -43,6 +44,7 @@ public class Labels {
         }
         label.setFont(new Font("Arial", 100));
         gridPane.getChildren().add(label);
+
 
     }
 

@@ -31,8 +31,9 @@ public class Controller implements Initializable {
 
     private Settings settings = new Settings();
     private Labels labels = new Labels();
+    private Cards cards = new Cards();
 
-    static void alertBox(){
+    static void alertBox() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
@@ -55,25 +56,25 @@ public class Controller implements Initializable {
             isCorrect = true;
         }
         if (!checkDiamonds.isSelected() && !checkClubs.isSelected() &&
-                !checkSpades.isSelected() && !checkHearts.isSelected()) {
-                                                                       // checking if at least one checkbox is selected
+                !checkSpades.isSelected() && !checkHearts.isSelected()) {           // checking if at least one checkbox is selected
             isCorrect3 = false;
 
-        }else if(checkDiamonds.isSelected() && checkClubs.isSelected() &&
-                checkSpades.isSelected() && checkHearts.isSelected()){
+        } else if (checkDiamonds.isSelected() || checkClubs.isSelected() ||
+                checkSpades.isSelected() || checkHearts.isSelected()) {
             settings.setDiamonds(checkDiamonds.isSelected());
             settings.setClubs(checkClubs.isSelected());
             settings.setSpades(checkSpades.isSelected());
             settings.setHearts(checkHearts.isSelected());
-             isCorrect3 = true;
+            isCorrect3 = true;
+
         }
         if (comboBox.getValue() == null) {
-           isCorrect2 = false; // checking if value is selected
+            isCorrect2 = false; // checking if value is selected
         } else if (comboBox.getValue() != null) {
             settings.setTimeRemember(Integer.parseInt(comboBox.getValue()));
             isCorrect2 = true;
         }
-        if(!isCorrect || !isCorrect2 || !isCorrect3){
+        if (!isCorrect || !isCorrect2 || !isCorrect3) {
             alertBox();                                   // if at least one of the settings isn't selected alert box appears
         }
         if (isCorrect && isCorrect2 && isCorrect3) {
@@ -99,11 +100,53 @@ public class Controller implements Initializable {
                 }
             }
 
+
             Scene scene2 = new Scene(gridPane, 1280, 720);
             stage.setScene(scene2);
             stage.show();
+            int cardsNum = 0;       // var storing info about how long the sequence of cards to memorize will be
+            if (checkDiamonds.isSelected()) {
+                cardsNum += 13;
+            }
+            if (checkClubs.isSelected()) {
+                cardsNum += 13;                                 // counting number of selected cards to declare array size
+            }
+            if (checkHearts.isSelected()) {
+                cardsNum += 13;
+            }
+            if (checkSpades.isSelected()) {
+                cardsNum += 13;
+            }
+            String[] sequence = new String[cardsNum];
+            int cardsCount = 0;
+            if (checkHearts.isSelected()) {                   // if given color is checked, random sequence of cards of this color is added to an array
+                for (int i = 0; i < 13; i++) {
+                    sequence[cardsCount] = cards.hearts[i];
+                    cardsCount++;
+                }
+            }
 
-
+            if (checkDiamonds.isSelected()) {
+                for (int i = 0; i < 13; i++) {
+                    sequence[cardsCount] = cards.diamonds[i];
+                    cardsCount++;
+                }
+            }
+            if (checkSpades.isSelected()) {
+                for (int i = 0; i < 13; i++) {
+                    sequence[cardsCount] = cards.spades[i];
+                    cardsCount++;
+                }
+            }
+            if (checkClubs.isSelected()) {
+                for (int i = 0; i < 13; i++) {
+                    sequence[cardsCount] = cards.clubs[i];
+                    cardsCount++;
+                }
+            }
+            for (int i = 0; i < cardsCount; i++) {
+                System.out.println(sequence[i]);
+            }
         }
     }
 
