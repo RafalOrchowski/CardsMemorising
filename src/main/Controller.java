@@ -4,13 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
 
 import java.util.ResourceBundle;
 
@@ -32,7 +31,7 @@ public class Controller implements Initializable {
 
     private Settings settings = new Settings();
     private Labels labels = new Labels();
-    Label label = new Label();
+
 
     public void handleGoAction() throws IOException {        // pressing GO button sets values user input and if values are OK it proceeds to a new scene
         boolean isCorrect = false;  // temporary variables to store info if comboboxes are selected
@@ -68,7 +67,7 @@ public class Controller implements Initializable {
 
 
             GridPane gridPane = labels.getGridPane();
-            for (int i3 = 0; i3 < 3; i3++) {
+            for (int i3 = 0; i3 < 7; i3++) {
                 labels.addLabels2("label", 0, i3);
 
                 for (int i4 = 0; i4 < 13; i4++) {
