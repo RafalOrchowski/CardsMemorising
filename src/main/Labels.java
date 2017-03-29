@@ -1,5 +1,7 @@
 package main;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -13,7 +15,7 @@ import java.util.Collections;
 public class Labels {
     private GridPane gridPane = new GridPane();
     private Cards cards = new Cards();
-    Settings settings = new Settings();
+
 
     public GridPane getGridPane() {
         return gridPane;
@@ -29,16 +31,20 @@ public class Labels {
 
 
         label.setId(labelname + columnIndex);
-        if (gridPane.getRowIndex(label) == 3) {         //checking if the color is selected; If not, doesn't set text;
+
+        if (gridPane.getRowIndex(label) == 3 && Settings.getHearts()) {         //checking if the color is selected; If not, doesn't set text;
             label.setText(cards.hearts[gridPane.getColumnIndex(label)]);
             label.setTextFill(Color.web("red"));
-        } else if (gridPane.getRowIndex(label) == 4) {
+        }
+        if (gridPane.getRowIndex(label) == 4 && Settings.getDiamonds()) {
             label.setText(cards.diamonds[gridPane.getColumnIndex(label)]);
             label.setTextFill(Color.web("blue"));
-        } else if (gridPane.getRowIndex(label) == 5) {
+        }
+        if (gridPane.getRowIndex(label) == 5 && Settings.getSpades()) {
             label.setText(cards.spades[gridPane.getColumnIndex(label)]);
             label.setTextFill(Color.web("black"));
-        } else if (gridPane.getRowIndex(label) == 6) {
+        }
+        if (gridPane.getRowIndex(label) == 6 && Settings.getClubs()) {
             label.setText(cards.clubs[gridPane.getColumnIndex(label)]);
             label.setTextFill(Color.web("green"));
         }

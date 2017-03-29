@@ -21,13 +21,13 @@ public class Controller implements Initializable {
     @FXML
     public Button goButton = new Button();
     @FXML
-    private CheckBox checkHearts = new CheckBox();
+    public CheckBox checkHearts = new CheckBox();
     @FXML
-    private CheckBox checkSpades = new CheckBox();
+    public CheckBox checkSpades = new CheckBox();
     @FXML
-    private CheckBox checkClubs = new CheckBox();
+    public CheckBox checkClubs = new CheckBox();
     @FXML
-    private CheckBox checkDiamonds = new CheckBox();
+    public CheckBox checkDiamonds = new CheckBox();
 
     private Settings settings = new Settings();
     private Labels labels = new Labels();
@@ -43,10 +43,12 @@ public class Controller implements Initializable {
     }
 
 
-    public void handleGoAction() throws IOException {        // pressing GO button sets values user input and if values are OK it proceeds to a new scene
+    public void handleGoAction() throws IOException {        // pressing GO button sets values the user inputs and if values are OK it proceeds to a new scene
         boolean isCorrect = false;  // temporary variables to store info if comboboxes are selected
         boolean isCorrect2 = false;
         boolean isCorrect3 = false;
+
+
 
         if (comboBox1.getValue() == null) {
 
@@ -61,10 +63,6 @@ public class Controller implements Initializable {
 
         } else if (checkDiamonds.isSelected() || checkClubs.isSelected() ||
                 checkSpades.isSelected() || checkHearts.isSelected()) {
-            settings.setDiamonds(checkDiamonds.isSelected());
-            settings.setClubs(checkClubs.isSelected());
-            settings.setSpades(checkSpades.isSelected());
-            settings.setHearts(checkHearts.isSelected());
             isCorrect3 = true;
 
         }
@@ -85,20 +83,6 @@ public class Controller implements Initializable {
 
 
             GridPane gridPane = labels.getGridPane();
-            for (int i3 = 0; i3 < 7; i3++) {
-                labels.addLabels2("label", 0, i3);
-
-                for (int i4 = 0; i4 < 13; i4++) {
-                    labels.addLabels2("label", i4, i3);
-                }
-            }
-            for (int i3 = 3; i3 < 7; i3++) {
-                labels.addLabels("label", 0, i3);
-
-                for (int i4 = 0; i4 < 13; i4++) {
-                    labels.addLabels("label", i4, i3);
-                }
-            }
 
 
             Scene scene2 = new Scene(gridPane, 1280, 720);
@@ -107,15 +91,19 @@ public class Controller implements Initializable {
             int cardsNum = 0;       // var storing info about how long the sequence of cards to memorize will be
             if (checkDiamonds.isSelected()) {
                 cardsNum += 13;
+                settings.setDiamonds(true);
             }
             if (checkClubs.isSelected()) {
-                cardsNum += 13;                                 // counting number of selected cards to declare array size
+                cardsNum += 13;
+                settings.setClubs(true);                   // counting number of selected cards to declare array size
             }
             if (checkHearts.isSelected()) {
                 cardsNum += 13;
+                settings.setHearts(true);
             }
             if (checkSpades.isSelected()) {
                 cardsNum += 13;
+                settings.setSpades(true);
             }
             String[] sequence = new String[cardsNum];
             int cardsCount = 0;
@@ -146,6 +134,19 @@ public class Controller implements Initializable {
             }
             for (int i = 0; i < cardsCount; i++) {
                 System.out.println(sequence[i]);
+            }
+
+            for (int i3 = 0; i3 < 7; i3++) {
+                labels.addLabels2("label", 0, i3);
+                for (int i4 = 0; i4 < 13; i4++) {
+                    labels.addLabels2("label", i4, i3);                     // calling addlabels methods that creates labels with cards
+                }
+            }
+            for (int i3 = 3; i3 < 7; i3++) {
+                labels.addLabels("label", 0, i3);
+                for (int i4 = 0; i4 < 13; i4++) {
+                    labels.addLabels("label", i4, i3);
+                }
             }
         }
     }

@@ -2,8 +2,8 @@ package main;
 
 
 public class Settings {
-    private int timeRemember, timeConcentration;
-    private boolean clubs, hearts, diamonds, spades;
+    private static int timeRemember, timeConcentration;
+    private static boolean clubs, hearts, diamonds, spades;
 
     public void setTimeRemember(int timeRemember) {
         this.timeRemember = timeRemember;
@@ -13,15 +13,15 @@ public class Settings {
         this.timeConcentration = timeConcentration;
     }
 
-    public int getTimeRemember() {
+    public static int getTimeRemember() {
         return timeRemember;
     }
 
-    public int getTimeConcentration() {
+    public static int getTimeConcentration() {
         return timeConcentration;
     }
 
-    public boolean getClubs() {
+    public static boolean getClubs() {
         return clubs;
     }
 
@@ -29,7 +29,7 @@ public class Settings {
         this.clubs = clubs;
     }
 
-    public boolean getHearts() {
+    public static boolean getHearts() {
         return hearts;
     }
 
@@ -37,7 +37,7 @@ public class Settings {
         this.hearts = hearts;
     }
 
-    public boolean getDiamonds() {
+    public static boolean getDiamonds() {
         return diamonds;
     }
 
@@ -45,11 +45,13 @@ public class Settings {
         this.diamonds = diamonds;
     }
 
-    public boolean getSpades() {
+    public static boolean getSpades() {
         return spades;
     }
 
     public void setSpades(boolean spades) {
         this.spades = spades;
     }
+
+
 }
