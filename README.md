@@ -1,4 +1,4 @@
 # CardsMemorising
-Simple program to remember a sequence of cards.
+Simple program that helps you memorize a sequence of cards and measure time.
 
 No maven, spring, hibernate, nothing used XD
