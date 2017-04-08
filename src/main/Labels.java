@@ -1,10 +1,9 @@
 package main;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -15,12 +14,16 @@ import java.util.Collections;
 public class Labels {
     private GridPane gridPane = new GridPane();
     private Cards cards = new Cards();
+    private Pane Pane2 = new Pane();
+
 
 
     public GridPane getGridPane() {
         return gridPane;
     }
-
+    public Pane getPane() {
+        return Pane2;
+    }
     public void addLabels(String labelname, int columnIndex, int rowIndex) {
         Label label = new Label();
         ColumnConstraints column = new ColumnConstraints();
@@ -72,6 +75,11 @@ public class Labels {
         label.setFont(new Font("Arial", 75));
         gridPane.getChildren().add(label);
 
+    }
+    public void addLabels3(int time){
+
+        Focus.getLabel().setText(String.valueOf(time));
+        Focus.getLabel().setFont(new Font("Arial", 100));
     }
 
 

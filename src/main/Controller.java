@@ -3,23 +3,26 @@ package main;
 import java.io.IOException;
 import java.net.URL;
 
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-
 import java.util.ResourceBundle;
 
+
+
 public class Controller implements Initializable {
+
+
     @FXML
     private ComboBox<String> comboBox = new ComboBox<>();
     @FXML
     public ComboBox<String> comboBox1 = new ComboBox<>();
     @FXML
-    public Button goButton = new Button();
+    public static Button goButton = new Button();
     @FXML
     public CheckBox checkHearts = new CheckBox();
     @FXML
@@ -32,7 +35,7 @@ public class Controller implements Initializable {
     private Settings settings = new Settings();
     private Labels labels = new Labels();
     private Cards cards = new Cards();
-
+    private Focus focus = new Focus();
     static void alertBox() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -43,6 +46,8 @@ public class Controller implements Initializable {
     }
 
 
+
+
     public void handleGoAction() throws IOException {        // pressing GO button sets values the user inputs and if values are OK it proceeds to a new scene
         boolean isCorrect = false;  // temporary variables to store info if comboboxes are selected
         boolean isCorrect2 = false;
@@ -51,8 +56,7 @@ public class Controller implements Initializable {
 
 
         if (comboBox1.getValue() == null) {
-
-            isCorrect = false;          // checking if value is selected
+            isCorrect = false;                                   // checking if value is selected
         } else if (comboBox1.getValue() != null) {
             settings.setTimeConcentration(Integer.parseInt(comboBox1.getValue()));
             isCorrect = true;
@@ -67,7 +71,7 @@ public class Controller implements Initializable {
 
         }
         if (comboBox.getValue() == null) {
-            isCorrect2 = false; // checking if value is selected
+            isCorrect2 = false;                                                 // checking if value is selected
         } else if (comboBox.getValue() != null) {
             settings.setTimeRemember(Integer.parseInt(comboBox.getValue()));
             isCorrect2 = true;
@@ -75,20 +79,24 @@ public class Controller implements Initializable {
         if (!isCorrect || !isCorrect2 || !isCorrect3) {
             alertBox();                                   // if at least one of the settings isn't selected alert box appears
         }
+
         if (isCorrect && isCorrect2 && isCorrect3) {
+
+            focus.setFocusScene();
+
             Stage stage;
             stage = (Stage) goButton.getScene().getWindow();
             stage.setTitle("CardsMemorising");
             stage.setResizable(false);
-
-
-            GridPane gridPane = labels.getGridPane();
-
-
+            GridPane gridPane = labels.getGridPane();        // TODO make this stage appear after focus (remove goButton.getScene() and switch creating new stage/get stage from focus)
             Scene scene2 = new Scene(gridPane, 1280, 720);
             stage.setScene(scene2);
             stage.show();
-            int cardsNum = 0;       // var storing info about how long the sequence of cards to memorize will be
+
+
+
+
+            int cardsNum = 0;                             // var storing info about how long the sequence of cards to memorize will be
             if (checkDiamonds.isSelected()) {
                 cardsNum += 13;
                 settings.setDiamonds(true);
@@ -150,13 +158,17 @@ public class Controller implements Initializable {
             }
         }
     }
+    public void handleInstAction() throws IOException{ // TODO instructions pop up
+
+
+    }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        comboBox.getItems().addAll("15", "30", "45", "60", "90");
-        comboBox1.getItems().addAll("15", "30", "45", "60");
+        comboBox.getItems().addAll("15", "30", "45", "60", "90", "150");
+        comboBox1.getItems().addAll("15", "30", "45", "60", "90", "150");
 
 
     }
